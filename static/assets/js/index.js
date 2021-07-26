@@ -137,6 +137,16 @@ function particle() {
     });
 }
 
+function publickey() {
+    let content = document.querySelector("#content")
+    content.classList.add('animate__animated', 'animate__fadeOut')
+    content.addEventListener('animationend', () => {
+        xhttp.open("GET", window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/publickey/")
+        xhttp.send()
+    }, {once: true});
+    window.history.pushState('Publickey', 'Publickey | mateo.snjegotinac.ch', '/publickey/')
+}
+
 function project() {
     let content = document.querySelector("#content")
     content.classList.add('animate__animated', 'animate__fadeOut')

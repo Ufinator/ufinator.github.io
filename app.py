@@ -1,7 +1,7 @@
 import flask
 from dotenv import load_dotenv
 from os import getenv
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_file
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -24,6 +24,19 @@ def index():
 @limiter.exempt
 def projects():
     return render_template('project.html')
+
+
+@app.route('/publickey/')
+@limiter.exempt
+def publickey():
+    return render_template('publickey.html')
+
+
+@app.route('/publickey/gpg/')
+@limiter.limit("5/minutes")
+@limiter.exempt
+def gpg():
+    return send_file('static/assets/mateos_public.asc', attachment_filename='mateos_public.asc')
 
 
 @app.route('/api/projects/')
