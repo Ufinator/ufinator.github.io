@@ -5,6 +5,7 @@ static/assets/css/now-ui-kit.css.map linguist-vendored
 static/assets/css/now-ui-kit.css linguist-vendored
 static/assets/css/bootstrap.min.css.map linguist-vendored
 static/assets/css/bootstrap.min.css linguist-vendored
+static/assets/css/icons/* linguist-vendored
 static/assets/js/index.js linguist-vendored=false
 static/assets/js/cookie.js linguist-vendored=false
 *.scss linguist-vendored
