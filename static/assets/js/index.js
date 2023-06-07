@@ -8,9 +8,9 @@ setInterval(() => {
 document.documentElement.style.setProperty('--animate-duration', '.5s');
 
 particle()
-if (window.location.pathname.endsWith("projects/")) {
-        fetchdata()
-}
+// if (window.location.pathname.endsWith("projects/")) {
+//        fetchdata()
+//}
 
 xhttp.onload = function() {
     let parser = new DOMParser;

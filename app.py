@@ -11,7 +11,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
-limiter = Limiter(app, key_func=get_remote_address)
+limiter = Limiter(app)
 
 
 @app.route('/')
@@ -39,7 +39,7 @@ def gpg():
     return send_file('static/assets/mateos_public.asc', attachment_filename='mateos_public.asc')
 
 
-@app.route('/api/projects/')
+# @app.route('/api/projects/')
 @limiter.limit("10/5seconds")
 @limiter.limit("50/20seconds")
 def apipro():
