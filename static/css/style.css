@@ -1,0 +1,173 @@
+:root {
+    --text: #061323;
+    --background: #e5effa;
+    --primary: #076cdf;
+    --secondary: #d2e2f4;
+    --accent: #2169ba; 
+}
+
+body h1 {
+    font-weight: 500;
+}
+
+body h2 {
+    font-weight: 400;
+}
+
+body p {
+    font-size: 150%;
+    font-weight: 300;
+}
+
+body {
+    background-color: var(--background);
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.navbar-custom {
+    background-color: var(--background);
+    filter: brightness(0.95);
+    margin: 2% 3% 0 3%;
+    border-radius: 10px;
+}
+
+.welcome {
+    margin: 3% 3% 0 3%;
+    text-align: center;
+    background-color: var(--secondary);
+    border-radius: 5px;
+}
+
+.welcome .container {
+    padding: 2% 1% 2% 1%;
+}
+
+.aboutme {
+    text-align: center;
+    margin: 3%;
+    font-size: 0;
+}
+
+.aboutme .block {
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    min-height: 400px;
+    min-width: 350px;
+    background-color: #6097d6;
+    margin: auto auto 3% 3%;
+    color: white;
+    border-radius: 10px;
+}
+
+.aboutme .block .text {
+    margin: 5%;
+    font-size: 15px;
+}
+
+.aboutme h2 {
+    text-align: center;
+}
+
+/* My Projects corner */
+
+.myProjects {
+    margin: 0 3% 0 3%;
+    padding-bottom: 0.5%;
+    text-align: center;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    height: 100%;
+}
+
+.myProjects .boxdescription {
+    padding: 3% 0 3% 0;
+}
+
+.myProjects .projects {
+    margin: 0 3% 3% 3%;
+    padding: max(30px, 2%);
+    border-radius: 10px;
+    background-color: #a8c0dd;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.myProjects .project {
+    margin: auto 1% auto auto;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #b4f7b7;
+    width: 390px;
+    white-space: normal;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.myProjects a {
+    text-decoration: none;
+    color: black;
+}
+
+.myProjects .project:hover,
+.myProjects .project:focus,
+.myProjects .project:active {
+    transform: scale(1.1);
+}
+
+.myProjects .project h1 {
+    font-size: 30px;
+}
+
+.myProjects .project h4 {
+    font-size: 17px;
+    color: #7c7d7e;
+}
+
+.myProjects .project p {
+    font-size: 24px;
+}
+
+.myProjects .project img {
+    width: 95%;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+.bounceLeft {
+    animation: bounceInLeft;
+    animation-duration: 2s;
+}
+
+.bounceRight {
+    animation: bounceInRight;
+    animation-duration: 2s;
+}
+
+.bounceUp {
+    animation: bounceInUp;
+    animation-duration: 2s;
+}
+
+.hiddenBounceR,
+.hiddenBounceL,
+.hiddenBounceUp {
+    visibility: hidden;
+}
+
+footer {
+    background-color: #797979;
+    width: 94%;
+    padding: 0.5%;
+    margin: 3% 3% 3% 3%;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+footer h4 {
+    margin-top: 0.5%;
+    font-size: 100%;
+    color: #ffffff;
+}

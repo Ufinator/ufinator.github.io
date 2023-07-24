@@ -1,0 +1,19 @@
+{
+  "name": "msnj_server",
+  "version": "0.0.1",
+  "description": "A backend server which fetches and post data for my website",
+  "main": "index.js",
+  "scripts": {
+    "run": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateo Snjegotianc",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "github:mysqljs/mysql"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
