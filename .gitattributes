@@ -1,8 +1,0 @@
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
-static/assets/css/style.css linguist-vendored=false
-static/assets/css/project.css linguist-vendored=false
-static/assets/css/publickey.css linguist-vendored=false
-static/assets/js/index.js linguist-vendored=false
-static/assets/js/cookie.js linguist-vendored=false
