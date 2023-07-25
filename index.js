@@ -1,9 +1,10 @@
 const express = require('express')
 const path = require('path')
-const req = require('express/lib/request')
-const res = require('express/lib/response')
 const app = express()
+const postgres = require('postgres');
 const port = 3000
+
+require('dotenv').config();
 
 app.use('/assets',express.static('static/'))
 
@@ -11,27 +12,34 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/html/index.html'))
 })
 
-app.get('/api/get/projects', (req, res) => {
-    res.json({
-        "0": {
-            "title": "My Website",
-            "creationdate": 1689984000,
-            "status": 0,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "img_url": "https://github.com/Ufinator/webassets/blob/master/homepagebanner.png?raw=true",
-            "project_url": "https://example.com/"
-        },
-        "1": {
-            "title": "Example",
-            "creationdate": 1648252800,
-            "status": 1,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "img_url": "https://github.com/Ufinator/webassets/blob/master/homepagebanner.png?raw=true",
-            "project_url": "https://example.com/"
-        }
+app.get('/api/get/projects', async (req, res) => {
+    const response = await fetchProjects();
+    const result = JSON.parse(JSON.stringify(response));
+    var json = {};
+    var count = 0;
+    result.forEach((el) => {
+        json = {...json, [count]: {
+            "title": el['title'],
+            "creationdate": el['timestamp'],
+            "status": el['status'],
+            "description": el['description'],
+            "img_url": el['imgurl'],
+            "project_url": el['projecturl'],
+        }};
+        count += 1;
     })
+    res.json(json)
 })
 
 app.listen(port, () => {
     console.log(`Server is listening to ${port}`)
 })
+
+async function fetchProjects() {
+    console.log(process.env.POSTGRES_URL)
+    const sql = postgres(process.env.POSTGRES_URL);
+    const data = await sql`
+        SELECT * FROM projects;
+    `;
+    return data;
+}
