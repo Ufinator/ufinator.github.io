@@ -1,11 +1,9 @@
-import flask
 from dotenv import load_dotenv
 from os import getenv
 from flask import Flask, render_template, jsonify, send_file
 from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
-import mysql.connector
+# import mysql.connector - Not used. More infos below
 
 load_dotenv()
 
@@ -38,22 +36,23 @@ def publickey():
 def gpg():
     return send_file('static/assets/mateos_public.asc', attachment_filename='mateos_public.asc')
 
+# Mysql feature not used.
 
 # @app.route('/api/projects/')
-@limiter.limit("10/5seconds")
-@limiter.limit("50/20seconds")
-def apipro():
-    cnx = mysql.connector.connect(
-        host=getenv("DBHOST"),
-        port=getenv("DBPORT"),
-        user=getenv("DBUSER"),
-        password=getenv("DBPASSWORD"),
-        database=getenv("DBDATABASE")
-    )
-    cursor = cnx.cursor()
-    cursor.execute("SELECT * FROM projects")
-    data = cursor.fetchall()
-    return jsonify(data)
+# @limiter.limit("10/5seconds")
+# @limiter.limit("50/20seconds")
+# def apipro():
+#     cnx = mysql.connector.connect(
+#         host=getenv("DBHOST"),
+#         port=getenv("DBPORT"),
+#         user=getenv("DBUSER"),
+#         password=getenv("DBPASSWORD"),
+#         database=getenv("DBDATABASE")
+#     )
+#     cursor = cnx.cursor()
+#     cursor.execute("SELECT * FROM projects")
+#     data = cursor.fetchall()
+#     return jsonify(data)
 
 
 @app.errorhandler(429)
