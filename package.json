@@ -4,12 +4,13 @@
   "description": "A backend server which fetches and post data for my website",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "debug": "nodemon index.js"
+    "start": "DEBUG=0 node index.js",
+    "debug": "DEBUG=1 nodemon index.js"
   },
   "author": "Mateo Snjegotianc",
   "license": "MIT",
   "dependencies": {
+    "cli-color": "^2.0.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "postgres": "^3.3.5"
